@@ -1,0 +1,39 @@
+Jenkins
+=======
+
+ - Jenkins is a software which allows "Continous integration". Jenkins will be installed where central build take place.
+
+- Continuous Integration is a development practice that requires developers to integrate code into a shared repository at regular intervals. 
+
+Requirements:
+2GB Memory
+JDK
+Enough Disk storage for Build
+Any OS
+
+
+Add Slave
+=========
+Global Configuration security -> Agents-> Ramdom
+Manage Node-New node->name(Slave),remote directory(Remote root directory), Launch Method(COnnecting to masterwebstart)
+
+Git Integration
+===============
+Add new item->gitproject(git repo ulr), Restrict where this project can be run (Slave)
+	      Source code management -> epository url, verify branch -> save
+Docker integration
+=================
+build - freestyle
+----------------------------------------------------
+cd /home/ubuntu/jenkins/workspace/build-website
+sudo docker build . -t test
+sudo docker run -it -p 80:80 -d test
+----------------------------------------------------
+create a Dockerfile using GIT with the customized image, from jenkins go to the workspace and build new image and run the container.
+
+
+integration of selenium
+=======================
+sudo cp ./test.jar /home/ubuntu
+sudo su -c "java -jar /home/ubuntu/test.jar -s /bin/sh ubuntu
+
